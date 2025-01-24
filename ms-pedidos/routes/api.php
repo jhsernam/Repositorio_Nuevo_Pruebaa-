@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\orderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/orders', [orderController::class, 'index']);
+Route::post('/orders', [orderController::class, 'store']);
+Route::get('/orders/{id}', [orderController::class, 'show']);
+Route::put('/orders/{id}', [orderController::class, 'update']);
+Route::delete('/orders/{id}', [orderController::class, 'destroy']);
